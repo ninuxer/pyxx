@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .div1{
+            height: 500px;
+            width: 500px;
+            border: lightskyblue solid 1px;
+            position: absolute;    // 因为要使用left、top对div1进行定位，因此要定义此属性，会相对窗口移动
+        }
+        .div2{
+            height: 50px;
+            background-color: #2459a2;
+        }
+        .div3{
+            height: 450px;
+            background-color: #c0cddf;
+        }
+    </style>
+</head>
+<body>
+<div class="div1">
+    <div class="div2">
+        标题
+    </div>
+    <div class="div3">
+        内容
+    </div>
+</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    $(".div2").mouseover(function () {              // 利用mouseover直接绑定鼠标放上去的事件
+        $(this).css("cursor","move");               // 将鼠标形态变为移动状态
+    }).on("mousedown",function (event) {            // 由于要操作的对象还是div2，因此用链式操作，继续进行
+                                                    // 用on方式绑定mousedown事件，定义鼠标按下去的操作
+                                                    // 传递event事件参数，以获取鼠标位置
+        var mouse_x=event.clientX;        // 获取鼠标位置的X轴
+        var mouse_y=event.clientY;        // 获取鼠标位置的Y轴
+        var div1_x=$(this).parent().offset()["left"];    // 获取父标签div1相对浏览器的位置
+        var div1_y=$(this).parent().offset()["top"];
+
+        $(this).mousemove(function (event) {   // 由于鼠标拖动是在鼠标按下的前提下发生的，
+                                               // 因此在mousedown内部绑定mousemove事件
+            var new_mouse_x = event.clientX;   // 获取移动后的鼠标位置
+            var new_mouse_y = event.clientY;
+
+            var new_div1_x = div1_x + (new_mouse_x - mouse_x);   // 通过鼠标移动的差值，计算窗口应该移动的位置
+            var new_div1_y = div1_y + (new_mouse_y - mouse_y);
+
+            $(this).parent().css("left", new_div1_x + 'px');   // 设定窗口移动后新的位置
+            $(this).parent().css("top", new_div1_y + 'px');
+        })
+    }).mouseup(function () {   // 当移动之后，鼠标放开时，应该解除mousemove的绑定，否则会一直移动
+        $(this).unbind("mousemove");
+    })
+
+</script>
+
+</body>
+</html>

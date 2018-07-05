@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab切换-by-nwc</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .outer {
+            margin-left: 10%;
+            margin-right: 10%;
+            background-color: darkgray;
+            width: 80%;
+
+        }
+
+        .head-menu {
+            background-color: #3299ff;
+            color: #c0cddf;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            overflow: auto;
+        }
+
+        .main-content {
+            background-color: burlywood;
+            width: 100%;
+            height: 500px;
+        }
+
+        .inner-menu {
+            display: inline-block;
+            width: 150px;
+            text-align: center;
+        }
+
+        .current {
+            background-color: #2459a2;
+        }
+
+        .hide {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="outer">
+    <div class="head-menu">
+        <div class="inner-menu current" num="1">菜单一</div>
+        <div class="inner-menu" num="2">菜单二</div>
+        <div class="inner-menu" num="3">菜单三</div>
+    </div>
+
+    <div class="main-content">
+        <div class="" con="1">内容一</div>
+        <div class="hide" con="2">内容二</div>
+        <div class="hide" con="3">内容三</div>
+    </div>
+</div>
+
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    $(".head-menu .inner-menu").click(function () {
+        $(this).addClass("current").siblings().removeClass("current");
+        var num=$(this).attr("num");
+        $(this).parent().next("div").children("[con="+num+"]").removeClass("hide").siblings().addClass("hide");
+    })
+
+
+</script>
+
+</body>
+</html>

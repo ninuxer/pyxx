@@ -1,0 +1,7 @@
+2018-04-19 15:57:51,976 logging_configparser实践.py[line:96] ERROR ##### This is my test ERROR log
+2018-04-19 16:00:21,025 logging_configparser实践.py[line:95] ERROR ##### This is my test ERROR log
+2018-04-19 17:39:09,214 logging_configparser实践.py[line:95] ERROR ##### This is my test ERROR log
+2018-04-20 10:13:56,790 logging_configparser实践.py[line:95] ERROR ##### This is my test ERROR log
+2018-04-20 10:14:20,771 logging_configparser实践.py[line:95] ERROR ##### This is my test ERROR log
+2018-04-20 10:28:58,109 logging_configparser实践.py[line:95] ERROR ##### This is my test ERROR log
+2018-04-20 10:29:37,529 logging_configparser实践.py[line:95] ERROR ##### This is my test ERROR log
